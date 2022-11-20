@@ -5,7 +5,7 @@ var cors = require('cors')
 
 const app = express();
 
-// if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
+if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
 
 const PORT = 8080;
 
