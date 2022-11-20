@@ -5,15 +5,15 @@ var cors = require('cors')
 
 const app = express();
 
-if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
+// if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
 
-const PORT = process.env.PORT || 8080;
+const PORT = 8080;
 
 app.use(express.json());
 
 app.use(cors())
 
-app.use("/", route)
+// app.use("/", route)
 
 connectDatabase();
 
