@@ -1,6 +1,6 @@
 const express = require("express");
 const connectDatabase = require("./helpers/database/connectDatabase");
-const route = require("./routers/indexRouter")
+// const route = require("./routers/indexRouter")
 var cors = require('cors')
 
 const app = express();
