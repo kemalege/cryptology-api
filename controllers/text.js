@@ -3,18 +3,18 @@ var CryptoJS = require("crypto-js");
 const CipherText = require("../models/CipherText");
 const CipherKey = require("../models/CipherKey");
 
-const recordPlainText = async (req, res, next) => {
-  const { content } = req.body;
+// const recordPlainText = async (req, res, next) => {
+//   const { content } = req.body;
 
-  const newText = await PlainText.create({
-    content,
-  });
+//   const newText = await PlainText.create({
+//     content,
+//   });
   
-  res.status(200).json({
-    success: true,
-    data: newText,
-  });
-};
+//   res.status(200).json({
+//     success: true,
+//     data: newText,
+//   });
+// };
 
 const recordText = async (req, res, next) => {
   const { content } = req.body;
