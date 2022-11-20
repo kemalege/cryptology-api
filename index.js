@@ -1,6 +1,6 @@
 const express = require("express");
 const connectDatabase = require("./helpers/database/connectDatabase");
-// const route = require("./routers/indexRouter")
+const routes = require("./routes")
 var cors = require('cors')
 
 const app = express();
@@ -13,9 +13,9 @@ app.use(express.json());
 
 app.use(cors())
 
-// app.use("/", route)
-
 connectDatabase();
+
+app.use("/", routes)
 
 app.get("/", (req, res) => {
   res.send("Kemal ege");
