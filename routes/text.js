@@ -1,5 +1,5 @@
 const express = require('express');
-const { getLatestText, recordText } = require('../controllers/Text')
+const { getLatestText, recordText } = require('../controllers/text')
 const router = express.Router();
 
 router.get('/gettext', getLatestText)
