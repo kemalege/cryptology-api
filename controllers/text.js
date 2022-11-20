@@ -17,19 +17,20 @@ const CipherKey = require("../models/CipherKey");
 // };
 
 const recordText = async (req, res, next) => {
-  const { content } = req.body;
-  
-  const key = await CipherKey.findOne();
+
+  const { content, keyId } = req.body;
+
+  console.log(req.body)
+
+  const key = await CipherKey.findOne({ 'id' : keyId})
+ 
 
   const ciphertext = CryptoJS.AES.encrypt(content, key.value).toString();
   
   const newCipherText = await CipherText.create({
     content: ciphertext,
+    keyId: keyId
   });
-
-  // const newCipherKey = await CipherKey.create({
-  //   value: "5468617473206D79204B756E67204675"
-  // })
   
   res.status(200).json({
     success: true,
@@ -43,7 +44,7 @@ const getLatestText = async (req, res, next) => {
     .sort({ createdAt: -1 })
     .limit(10);
 
-  const key = await CipherKey.findOne();
+  const key = await CipherKey.findOne({'id' : latestText.keyId});
 
   const bytes  = CryptoJS.AES.decrypt(latestText.content, key.value);
   const originalText = bytes.toString(CryptoJS.enc.Utf8);

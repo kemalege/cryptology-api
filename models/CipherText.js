@@ -6,7 +6,7 @@ const CipherTextSchema = new Schema({
   content: {
     type: String,
   },
-  key: {
+  keyId:{
     type: String,
   },
   createdAt: {
