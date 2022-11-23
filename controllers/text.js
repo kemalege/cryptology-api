@@ -19,11 +19,11 @@ const CipherKey = require("../models/CipherKey");
 const recordText = async (req, res, next) => {
   const { content, keyId } = req.body;
 
-  // console.log(req.body)
 
   const key = await CipherKey.findOne({ id: keyId });
 
   const ciphertext = CryptoJS.AES.encrypt(content, key.value).toString();
+  console.log(ciphertext)
 
   const newCipherText = await CipherText.create({
     content: ciphertext,
