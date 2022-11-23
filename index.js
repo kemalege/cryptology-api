@@ -6,8 +6,7 @@ var cors = require('cors')
 const app = express();
 
 app.use(cors({
-  origin: "*",
-  methods: "GET,PUT,POST,DELETE"
+  origin: "http://localhost:3000"
 }))
 
 if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
