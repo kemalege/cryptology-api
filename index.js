@@ -6,7 +6,7 @@ var cors = require('cors')
 const app = express();
 
 app.use(cors({
-  origin :"*",
+  origin: '*'
 }))
 
 if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
