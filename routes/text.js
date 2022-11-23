@@ -5,7 +5,7 @@ var cors = require('cors')
 
 router.get('/gettext', getLatestText)
 router.post('/recordtext', recordText)
-router.options('/text', cors())
+router.options('/recordtext', cors())
 router.get('/getalltexts', getAllTexts)
 
 module.exports = router
