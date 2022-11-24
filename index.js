@@ -5,18 +5,9 @@ var cors = require('cors')
 
 const app = express();
 
-// app.use(cors({
-//   origin: "https://encdecrypt.netlify.app"
-// }))
-
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+app.use(cors({
+  origin: "*"
+}))
 
 if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
 
