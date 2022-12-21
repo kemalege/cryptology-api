@@ -102,7 +102,7 @@ const verify = async (req, res, next) => {
   // //   }
   // // });
   
-  let {hashdDigest} = req.body;
+  let {hashDigest} = req.body;
 
   const key = await SignPublicKey.findOne();
   const signatureData = await Sign.findOne();
@@ -117,7 +117,7 @@ const verify = async (req, res, next) => {
   })
 
   const verify = crypto.createVerify("SHA256")
-  verify.update(hashdDigest)
+  verify.update(hashDigest)
   verify.end()
 
   let result = verify.verify(publicKey, Buffer.from(signature,"base64"))
@@ -132,7 +132,7 @@ const sign = async (req, res, next) => {
   const nonce = n.toString().padStart(10, "0");
   
   let privateKey = process.env.PRIVATE_KEY
-
+  privateKey = privateKey.toString('base64')
   // const signpublickey = await SignPublicKey.create({
   //   value: process.env.PUBLIC_KEY
   // });
