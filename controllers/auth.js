@@ -131,16 +131,15 @@ const sign = async (req, res, next) => {
   const n = crypto.randomInt(0, 10000000000);
   const nonce = n.toString().padStart(10, "0");
   
-  let privateKey = process.env.PRIVATE_KEY
-  privateKey = privateKey.toString('base64')
+  let {PRIVATE_KEY} = process.env
   // const signpublickey = await SignPublicKey.create({
   //   value: process.env.PUBLIC_KEY
   // });
   const hash = sha256(nonce);
   const hashDigest = Base64.stringify(hash);
 
-  privateKey = crypto.createPrivateKey({
-    key: Buffer.from(privateKey, 'base64'),
+  PRIVATE_KEY = crypto.createPrivateKey({
+    key: Buffer.from(PRIVATE_KEY, 'base64'),
     type: 'pkcs8',
     format: 'der'
   })
@@ -148,7 +147,7 @@ const sign = async (req, res, next) => {
   const sign = crypto.createSign('SHA256')
   sign.update(hashDigest)
   sign.end()
-  const signature = sign.sign(privateKey).toString("base64")
+  const signature = sign.sign(PRIVATE_KEY).toString("base64")
 
   const newsignature = await Sign.findOneAndUpdate(
     {
