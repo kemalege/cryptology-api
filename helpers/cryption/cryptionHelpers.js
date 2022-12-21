@@ -12,7 +12,7 @@ const decryptData = async (req) => {
 const encryptData = async (req) => {
   const { AES_KEY } = process.env;
 
-  const cipherImage = CryptoJS.AES.encrypt(JSON.stringify(req.file), AES_KEY).toString();
+  const cipherImage = CryptoJS.AES.encrypt(JSON.stringify(req), AES_KEY).toString();
 
   return cipherImage;
 };
