@@ -131,7 +131,7 @@ const sign = async (req, res, next) => {
   const n = crypto.randomInt(0, 10000000000);
   const nonce = n.toString().padStart(10, "0");
   
-  const PRIVATE_KEY = process.env.PRIVATE_KEY
+  let PRIVATE_KEY = process.env.PRIVATE_KEY
   // const signpublickey = await SignPublicKey.create({
   //   value: process.env.PUBLIC_KEY
   // });
